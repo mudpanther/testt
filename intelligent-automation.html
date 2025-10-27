@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Automation - Canner AI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(90deg, #00d9ff 1px, transparent 1px),
+                linear-gradient(180deg, #00d9ff 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            border-bottom: 2px solid #00d9ff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brain-icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px #00d9ff; }
+            50% { box-shadow: 0 0 40px #00d9ff; }
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00d9ff;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .hero-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%);
+        }
+
+        .service-icon-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #00d9ff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #00d9ff;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
+            border-color: #8a2be2;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+            color: #b0b0b0;
+        }
+
+        .stats-section {
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-top: 0.5rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 50px rgba(138, 43, 226, 0.7);
+        }
+
+        ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        li {
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(0, 217, 255, 0.05);
+            border-left: 4px solid #00d9ff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            transition: all 0.3s;
+        }
+
+        li:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-left-color: #8a2be2;
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="circuit-bg"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="brain-icon">🧠</div>
+                <h1>CANNER AI SOLUTIONS</h1>
+            </div>
+            <a href="canner-ai-updated.html" class="back-button">← Back to Home</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="service-icon-large">🤖</div>
+        <h1>Intelligent Automation</h1>
+        <p class="tagline">Free Your Team to Focus on What Matters Most</p>
+    </section>
+
+    <div class="container">
+        <div class="content-section">
+            <h2>Automate the Mundane, Elevate the Meaningful</h2>
+            <p>Your team's time is your most valuable resource—yet countless hours are wasted on repetitive, manual tasks that add little strategic value. Intelligent Automation powered by AI doesn't just complete tasks faster; it transforms how your organization operates, freeing talented people to focus on innovation, strategy, and high-value work that drives growth.</p>
+            
+            <p>Our AI-powered automation solutions go far beyond simple scripts or macros. We implement sophisticated systems that learn, adapt, and improve over time, integrating seamlessly with your existing technology stack while delivering immediate and sustained productivity gains.</p>
+        </div>
+
+        <div class="stats-section">
+            <h2>The Power of Intelligent Automation</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Time Saved on Repetitive Tasks</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Automated Operations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Reduction in Manual Errors</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5x</div>
+                    <div class="stat-label">Productivity Increase</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h4>Reclaim Valuable Time</h4>
+                    <p>Eliminate hours of repetitive work each week, redirecting your team's energy to strategic initiatives that drive business growth.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Zero-Error Execution</h4>
+                    <p>Automated systems don't make typos, forget steps, or have bad days—ensuring consistent, accurate results every time.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h4>Focus on High-Value Work</h4>
+                    <p>Free your team from mundane tasks to concentrate on creativity, problem-solving, and strategic thinking that humans do best.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h4>Scale Without Limits</h4>
+                    <p>Handle increasing workloads without proportional increases in headcount or overhead costs.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔄</div>
+                    <h4>Seamless Integration</h4>
+                    <p>Our automation solutions work with your existing tools and systems—no need for expensive platform migrations.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">😊</div>
+                    <h4>Improved Employee Satisfaction</h4>
+                    <p>Teams love being freed from tedious work, leading to higher morale, engagement, and retention.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What Can Be Automated?</h2>
+            <p>Nearly any repetitive, rules-based task can be automated with AI. Here are common areas where we deliver exceptional results:</p>
+            
+            <ul>
+                <li><strong>Data Entry & Processing:</strong> Automatically extract, transform, and load data across systems without manual input</li>
+                <li><strong>Email Management:</strong> Intelligent sorting, prioritization, response drafting, and follow-up scheduling</li>
+                <li><strong>Report Generation:</strong> Automated creation and distribution of regular reports with real-time data</li>
+                <li><strong>Invoice Processing:</strong> End-to-end automation of invoice receipt, verification, approval routing, and payment</li>
+                <li><strong>Customer Communication:</strong> Smart routing, response automation, and personalized follow-ups at scale</li>
+                <li><strong>Appointment Scheduling:</strong> Intelligent calendar management and meeting coordination without back-and-forth</li>
+                <li><strong>Document Management:</strong> Automated organization, tagging, routing, and archival of documents</li>
+                <li><strong>Social Media Management:</strong> Scheduled posting, engagement monitoring, and response coordination</li>
+                <li><strong>Inventory Management:</strong> Automated reordering, stock level monitoring, and supplier communication</li>
+                <li><strong>Lead Qualification:</strong> Intelligent scoring, routing, and nurturing of prospects through your sales funnel</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Automation Process</h2>
+            
+            <h3>1. Task Identification & Analysis</h3>
+            <p>We work with your team to identify repetitive tasks that drain time and resources. Our analysis prioritizes automation opportunities based on frequency, complexity, and potential impact.</p>
+
+            <h3>2. Custom Solution Design</h3>
+            <p>We design automation workflows tailored to your specific business needs, ensuring seamless integration with your existing systems and processes.</p>
+
+            <h3>3. Intelligent Implementation</h3>
+            <p>Our AI-powered automation goes beyond simple if-then rules. We implement systems that can handle exceptions, learn from patterns, and adapt to changing conditions.</p>
+
+            <h3>4. Testing & Refinement</h3>
+            <p>Rigorous testing ensures your automated systems work flawlessly in real-world conditions. We refine and optimize based on actual performance data.</p>
+
+            <h3>5. Training & Handoff</h3>
+            <p>We don't just set it and forget it—we ensure your team understands how to work with and monitor the automated systems effectively.</p>
+
+            <h3>6. Ongoing Optimization</h3>
+            <p>As your business evolves, so do our automation solutions. We provide continuous monitoring and improvements to maximize long-term value.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Why Our Automation Is Different</h2>
+            <p>Many automation solutions are rigid, fragile, and require constant maintenance. Our intelligent automation leverages AI to create robust, adaptive systems that get smarter over time. We focus on practical, high-impact automation that delivers measurable ROI, not flashy demos that fall apart in production.</p>
+            
+            <p>Every automation project begins with understanding your unique context—your tools, your team, your goals. We build solutions that enhance your existing workflows rather than forcing you to change how you work. The result? Automation that actually gets used and delivers sustained value.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Real-World Impact</h2>
+            <p>Imagine reclaiming 10-20 hours per week that your team currently spends on repetitive tasks. Now imagine what your business could achieve with that time redirected toward customer relationships, product innovation, strategic planning, or new market opportunities.</p>
+            
+            <p>That's not a hypothetical—it's what our clients experience when they embrace intelligent automation. The question isn't whether you can afford to automate; it's whether you can afford not to.</p>
+        </div>
+    </div>
+
+    <section class="cta-section">
+        <h2>Ready to Automate and Elevate?</h2>
+        <p style="font-size: 1.2rem; color: #b0b0b0; margin-bottom: 2rem;">Let's identify which tasks are stealing your team's time and automate them away.</p>
+        <a href="canner-ai-updated.html#contact" class="cta-button">Schedule Your Consultation</a>
+    </section>
+
+    <!-- Zapier Chatbot Embed -->
+    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmh3k0zzz000ej873h0myu4mq'></zapier-interfaces-chatbot-embed>
+</body>
+</html>

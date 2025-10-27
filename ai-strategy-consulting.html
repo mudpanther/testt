@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Strategy Consulting - Canner AI Solutions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+        .circuit-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; background-image: linear-gradient(90deg, #00d9ff 1px, transparent 1px), linear-gradient(180deg, #00d9ff 1px, transparent 1px); background-size: 50px 50px; animation: circuitMove 20s linear infinite; }
+        @keyframes circuitMove { 0% { background-position: 0 0; } 100% { background-position: 50px 50px; } }
+        header { background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%); border-bottom: 2px solid #00d9ff; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .brain-icon { width: 50px; height: 50px; border: 2px solid #00d9ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px #00d9ff; } 50% { box-shadow: 0 0 40px #00d9ff; } }
+        .logo h1 { font-size: 1.8rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px #00d9ff; }
+        .back-button { background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%); color: #ffffff; text-decoration: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s; box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+        .back-button:hover { transform: translateY(-3px); box-shadow: 0 5px 30px rgba(138, 43, 226, 0.5); }
+        .hero-section { padding: 4rem 2rem; text-align: center; background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%); }
+        .service-icon-large { font-size: 5rem; margin-bottom: 1rem; color: #00d9ff; text-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+        h1 { font-size: 3.5rem; background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; }
+        .tagline { font-size: 1.5rem; color: #b0b0b0; margin-bottom: 3rem; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+        .content-section { margin-bottom: 4rem; }
+        h2 { font-size: 2.5rem; color: #00d9ff; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+        h3 { font-size: 1.8rem; color: #00d9ff; margin-bottom: 1rem; margin-top: 2rem; }
+        p { font-size: 1.2rem; line-height: 1.8; color: #b0b0b0; margin-bottom: 1.5rem; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .benefit-card { background: rgba(0, 217, 255, 0.05); border: 2px solid #00d9ff; border-radius: 20px; padding: 2rem; transition: all 0.3s; }
+        .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3); border-color: #8a2be2; }
+        .benefit-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .benefit-card h4 { font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem; }
+        .benefit-card p { font-size: 1rem; color: #b0b0b0; }
+        .cta-section { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%); }
+        .cta-button { display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%); color: #ffffff; text-decoration: none; font-size: 1.2rem; font-weight: 700; border-radius: 50px; transition: all 0.3s; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+        .cta-button:hover { transform: translateY(-5px); box-shadow: 0 10px 50px rgba(138, 43, 226, 0.7); }
+        ul { list-style: none; margin: 2rem 0; }
+        li { padding: 1rem; margin: 1rem 0; background: rgba(0, 217, 255, 0.05); border-left: 4px solid #00d9ff; border-radius: 10px; font-size: 1.1rem; color: #b0b0b0; transition: all 0.3s; }
+        li:hover { background: rgba(0, 217, 255, 0.1); border-left-color: #8a2be2; transform: translateX(10px); }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } .benefits-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="circuit-bg"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="brain-icon">🧠</div>
+                <h1>CANNER AI SOLUTIONS</h1>
+            </div>
+            <a href="canner-ai-updated.html" class="back-button">← Back to Home</a>
+        </nav>
+    </header>
+    <section class="hero-section">
+        <div class="service-icon-large">🎯</div>
+        <h1>AI Strategy Consulting</h1>
+        <p class="tagline">Build Your Roadmap to AI-Powered Success</p>
+    </section>
+    <div class="container">
+        <div class="content-section">
+            <h2>Your Comprehensive AI Adoption Roadmap</h2>
+            <p>Adopting AI isn't about chasing trends or implementing technology for its own sake—it's about strategically leveraging artificial intelligence to achieve specific business objectives. Our AI Strategy Consulting service helps you navigate the complex landscape of AI possibilities to create a clear, actionable roadmap aligned with your unique goals, resources, and market position.</p>
+            <p>Whether you're just beginning to explore AI or looking to scale existing initiatives, we provide expert guidance that transforms uncertainty into confidence. We help you make informed decisions about where to invest, how to prioritize, and what success looks like at each stage of your AI journey.</p>
+        </div>
+        <div class="content-section">
+            <h2>Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🗺️</div>
+                    <h4>Clear Strategic Direction</h4>
+                    <p>A comprehensive roadmap that outlines priorities, timelines, and success metrics for your AI initiatives.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h4>Informed Decision-Making</h4>
+                    <p>Expert guidance helps you avoid costly mistakes and make confident choices about AI investments.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Business-Aligned Goals</h4>
+                    <p>AI initiatives directly tied to measurable business outcomes, not disconnected technology experiments.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h4>Competitive Advantage</h4>
+                    <p>Position your organization ahead of competitors by strategically adopting AI where it matters most.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h4>Risk Mitigation</h4>
+                    <p>Identify and address potential challenges before they become problems, ensuring smooth implementation.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h4>Resource Optimization</h4>
+                    <p>Allocate budget and personnel efficiently by focusing on high-impact AI opportunities first.</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-section">
+            <h2>Our Strategic Approach</h2>
+            <h3>1. Current State Assessment</h3>
+            <p>We begin by understanding your business model, competitive landscape, existing technology stack, and organizational capabilities. This assessment reveals where you are now and what resources you can leverage for AI adoption.</p>
+            <h3>2. Opportunity Identification</h3>
+            <p>Using our expertise across industries and AI applications, we identify specific opportunities where AI can deliver meaningful business impact. Each opportunity is evaluated based on potential ROI, implementation complexity, and strategic alignment.</p>
+            <h3>3. Strategic Roadmap Development</h3>
+            <p>We create a phased implementation plan that prioritizes quick wins while building toward transformational capabilities. The roadmap includes specific initiatives, resource requirements, timelines, and success metrics.</p>
+            <h3>4. Technology & Vendor Selection</h3>
+            <p>Navigate the crowded AI vendor landscape with confidence. We help you evaluate options and select technologies that fit your needs without vendor lock-in or unnecessary complexity.</p>
+            <h3>5. Organizational Readiness</h3>
+            <p>Success with AI requires more than technology—it requires organizational change. We help you address culture, skills, processes, and governance to ensure your organization can fully leverage AI capabilities.</p>
+            <h3>6. Implementation Guidance</h3>
+            <p>We don't just hand you a strategy document and disappear. We provide ongoing guidance during implementation to ensure your AI initiatives stay on track and deliver expected results.</p>
+        </div>
+        <div class="content-section">
+            <h2>Strategic Focus Areas</h2>
+            <ul>
+                <li><strong>AI Use Case Prioritization:</strong> Identify and rank AI opportunities based on business impact and feasibility</li>
+                <li><strong>Technology Stack Planning:</strong> Design your AI infrastructure for scalability, flexibility, and cost-effectiveness</li>
+                <li><strong>Data Strategy:</strong> Ensure you have the data foundations needed to power effective AI systems</li>
+                <li><strong>Governance & Ethics:</strong> Establish frameworks for responsible AI use that manages risk and builds trust</li>
+                <li><strong>Talent & Skills:</strong> Build or acquire the capabilities needed to execute your AI strategy</li>
+                <li><strong>Change Management:</strong> Drive adoption and minimize resistance to AI-driven transformations</li>
+                <li><strong>Partner Ecosystem:</strong> Identify and engage the right technology partners and vendors</li>
+                <li><strong>Measurement Framework:</strong> Define KPIs and tracking mechanisms to monitor AI initiative success</li>
+            </ul>
+        </div>
+        <div class="content-section">
+            <h2>Who Needs AI Strategy Consulting?</h2>
+            <p>Our strategic consulting is valuable for organizations at any stage of AI maturity:</p>
+            <ul>
+                <li><strong>AI Beginners:</strong> Just starting to explore AI and need guidance on where and how to begin</li>
+                <li><strong>Pilot Projects:</strong> Have run some experiments but struggle to scale or demonstrate clear ROI</li>
+                <li><strong>Scaling Challenges:</strong> Already using AI in pockets but lack a coordinated, enterprise-wide approach</li>
+                <li><strong>Strategy Refresh:</strong> Need to reassess AI priorities based on new market conditions or capabilities</li>
+                <li><strong>Digital Transformation:</strong> AI is one component of broader transformation and needs strategic integration</li>
+            </ul>
+        </div>
+        <div class="content-section">
+            <h2>Why Choose Canner AI Solutions?</h2>
+            <p>Unlike large consulting firms that apply cookie-cutter frameworks, we develop strategies tailored to your specific context. We combine deep technical knowledge of AI capabilities with practical business experience to create strategies that are both ambitious and achievable.</p>
+            <p>Our approach is pragmatic, not academic. We focus on actionable recommendations that can be implemented with your available resources. And we stay engaged to help you navigate the inevitable challenges that arise during implementation.</p>
+        </div>
+        <div class="content-section">
+            <h2>The Time is Now</h2>
+            <p>AI is moving from experimental to essential. Organizations that develop and execute clear AI strategies now will lead their industries tomorrow. Those that wait risk falling permanently behind as AI-native competitors emerge and traditional players transform.</p>
+            <p>The question isn't whether your organization will adopt AI—it's whether you'll lead or follow. Strategic planning today determines your competitive position for years to come.</p>
+        </div>
+    </div>
+    <section class="cta-section">
+        <h2>Ready to Chart Your AI Course?</h2>
+        <p style="font-size: 1.2rem; color: #b0b0b0; margin-bottom: 2rem;">Let's develop a strategic roadmap that transforms AI from buzzword to business advantage.</p>
+        <a href="canner-ai-updated.html#contact" class="cta-button">Schedule Your Strategy Session</a>
+    </section>
+    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmh3k0zzz000ej873h0myu4mq'></zapier-interfaces-chatbot-embed>
+</body>
+</html>

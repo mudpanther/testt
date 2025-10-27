@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canner AI Solutions - AI Consulting & Automation Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Circuit Board Background Animation */
+        .circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(90deg, #00d9ff 1px, transparent 1px),
+                linear-gradient(180deg, #00d9ff 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        /* Glowing particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d9ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00d9ff;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            border-bottom: 2px solid #00d9ff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brain-icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px #00d9ff; }
+            50% { box-shadow: 0 0 40px #00d9ff; }
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00d9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #8a2be2;
+            text-shadow: 0 0 10px #8a2be2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d9ff, #8a2be2);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .tagline {
+            font-size: 2rem;
+            color: #00d9ff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .motto {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 2rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px #00d9ff;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 50px rgba(138, 43, 226, 0.7);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            cursor: pointer;
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 217, 255, 0.3);
+            border-color: #8a2be2;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #00d9ff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .founders {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 20px;
+        }
+
+        .founders h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(138, 43, 226, 0.05) 100%);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(0, 217, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+            border-color: #8a2be2;
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem;
+            color: #00d9ff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #8a2be2;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            border-top: 2px solid #00d9ff;
+            padding: 2rem;
+            text-align: center;
+            color: #b0b0b0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #00d9ff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #8a2be2;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .motto {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Circuit decorations */
+        .circuit-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .circuit-decoration-1 {
+            top: 10%;
+            left: 5%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .circuit-decoration-2 {
+            bottom: 10%;
+            right: 5%;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="circuit-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="brain-icon">🧠</div>
+                <h1>CANNER AI SOLUTIONS</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="circuit-decoration circuit-decoration-1"></div>
+        <div class="circuit-decoration circuit-decoration-2"></div>
+        <div class="hero-content">
+            <h2>CANNER AI SOLUTIONS</h2>
+            <p class="tagline">AI Consulting | Automation & Strategy</p>
+            <p class="subtitle">Strategic AI Implementation to Transform Your Business</p>
+            <p class="motto">WORK SMARTER,<br>NOT HARDER.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Cutting-edge AI solutions tailored to your business needs</p>
+            <div class="services-grid">
+                <a href="process-optimization.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">⚡</div>
+                    <h3>Process Optimization</h3>
+                    <p>Identify and eliminate inefficiencies in your workflow using advanced AI analysis. We streamline operations to save time and resources while maximizing productivity.</p>
+                </a>
+                <a href="intelligent-automation.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">🤖</div>
+                    <h3>Intelligent Automation</h3>
+                    <p>Automate repetitive tasks and free your team to focus on high-value work. Our AI-powered automation solutions integrate seamlessly with your existing systems.</p>
+                </a>
+                <a href="roi-enhancement.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">📈</div>
+                    <h3>ROI Enhancement</h3>
+                    <p>Implement data-driven AI strategies that directly impact your bottom line. We focus on measurable results and continuous improvement to maximize your return on investment.</p>
+                </a>
+                <a href="ai-strategy-consulting.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">🎯</div>
+                    <h3>AI Strategy Consulting</h3>
+                    <p>Develop a comprehensive AI roadmap aligned with your business goals. We provide expert guidance on AI adoption, implementation, and scaling.</p>
+                </a>
+                <a href="business-analysis.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">🔍</div>
+                    <h3>Business Analysis</h3>
+                    <p>Deep-dive analysis of your operations to uncover hidden opportunities. We leverage AI to provide insights that drive strategic decision-making.</p>
+                </a>
+                <a href="custom-ai-solutions.html" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Custom AI Solutions</h3>
+                    <p>Bespoke AI tools and systems designed specifically for your unique challenges. From concept to deployment, we build solutions that fit your needs perfectly.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <p>Canner AI Solutions is a cutting-edge consultancy dedicated to helping businesses harness the transformative power of artificial intelligence. We specialize in identifying inefficiencies, implementing intelligent automation, and developing strategic AI solutions that drive measurable results.</p>
+                
+                <p>Our approach is hands-on and results-oriented. We don't just provide recommendations—we work alongside you to implement solutions that make a real difference. Whether you're just beginning your AI journey or looking to optimize existing systems, we bring the expertise and innovation to help you succeed.</p>
+                
+                <div class="founders">
+                    <h3>Founded by Brothers with a Vision</h3>
+                    <p>Canner AI Solutions was founded by Maximilian Canner and his Brother Joshua Canner, combining deep technical expertise with a passion for helping businesses thrive. Our mission is simple: leverage AI strategically to help companies work smarter, not harder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p class="section-subtitle">Ready to transform your business with AI? Let's talk.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <a href="mailto:Info@canneraisolutions.com">Info@canneraisolutions.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📱 Phone</h3>
+                        <a href="tel:845-300-6352">845-300-6352</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>💼 Schedule a Consultation</h3>
+                        <p style="color: #b0b0b0; margin-top: 1rem;">Contact us today to discuss how AI can revolutionize your business operations and boost your ROI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Canner AI Solutions. All rights reserved.</p>
+        <p>AI Consulting | Automation & Strategy</p>
+        <div class="footer-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Zapier Chatbot Embed -->
+    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmh3k0zzz000ej873h0myu4mq'></zapier-interfaces-chatbot-embed>
+</body>
+</html>
